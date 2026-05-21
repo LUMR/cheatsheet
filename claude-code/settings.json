@@ -1,0 +1,70 @@
+{
+  "env": {
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+    "CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Read", "Glob", "Grep",
+      "Bash(go get:*)",
+      "Bash(npm run:*)",
+      "Bash(go build:*)",
+      "Bash(git diff:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": [
+      "Read(~/.ssh/*)",
+      "Read(.env)",
+      "Read(gateway.ps1)",
+      "Bash(sudo:*)"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -Command \"New-BurntToastNotification -Text 'Claude Code', '[权限申请]等待您的答复'\""
+          }
+        ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -Command \"New-BurntToastNotification -Text 'Claude Code', '[任务]您吩咐的任务已完成！'\""
+          }
+        ]
+      },
+      {
+        "matcher": "elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -Command \"New-BurntToastNotification -Text 'Claude Code', 'MCP服务器请求您的回复'\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0,
+    "refreshInterval": 10
+  },
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "language": "Chinese",
+  "effortLevel": "high",
+  "theme": "light"
+}

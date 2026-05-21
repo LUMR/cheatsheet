@@ -10,8 +10,12 @@
 - [npm / pnpm](./npm.md)
 - [快捷键](./shortcuts.md)（VS Code + Windows）
 - [正则表达式](./regex.md)
-- [Claude Code 环境变量](./Claude-Code-环境变量指南.md)
 - [其他工具](./tools.md)
+
+### Claude Code
+
+- [环境变量指南](./claude-code/Claude-Code-环境变量指南.md)
+- [配置示例](./claude-code/settings.json)
 
 ---
 

@@ -15,6 +15,7 @@
 ### Claude Code
 
 - [环境变量指南](./claude-code/Claude-Code-环境变量指南.md)
+- [Auto Mode 配置](./claude-code/claude-code-auto-mode.md)
 - [配置示例](./claude-code/settings.json)
 
 ---
